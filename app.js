@@ -4,6 +4,7 @@ const stuffRoutes = require('./routes/sauce');
 const mongoose = require('mongoose');
 const userRoutes = require('./routes/user');
 const path = require('path');
+const  mongoSanitize  =  require('express-mongo-sanitize') ;
 
 // connexion à la bd mongoose
 mongoose.connect('mongodb+srv://will_60:A19082015T@cluster0.ckpyh.mongodb.net/projet6?retryWrites=true&w=majority',
@@ -24,6 +25,7 @@ app.use((req, res, next) => {
 
 // on déclare les chemins utilisés pour enregistrer les données correspondants
   app.use(bodyParser.json());
+  app.use(mongoSanitize());
   app.use('/images', express.static(path.join(__dirname, 'images')));
   app.use('/api/auth', userRoutes);
   app.use('/api/sauces', stuffRoutes);
