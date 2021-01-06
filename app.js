@@ -25,7 +25,7 @@ app.use((req, res, next) => {
 
 // on déclare les chemins utilisés pour enregistrer les données correspondants
   app.use(bodyParser.json());
-  app.use(mongoSanitize());
+  app.use(mongoSanitize()); // Nettoie les données d'utilisateur pour protéger de l'injection
   app.use('/images', express.static(path.join(__dirname, 'images')));
   app.use('/api/auth', userRoutes);
   app.use('/api/sauces', stuffRoutes);
