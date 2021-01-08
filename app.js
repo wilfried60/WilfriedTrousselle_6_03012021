@@ -1,4 +1,5 @@
 const express = require('express');
+const helmet = require("helmet");
 const app = express();
 const stuffRoutes = require('./routes/sauce');
 const mongoose = require('mongoose');
@@ -17,7 +18,7 @@ const bodyParser = require('body-parser');
 
 // on déclare le header
 app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
     next();
@@ -26,6 +27,7 @@ app.use((req, res, next) => {
 // on déclare les chemins utilisés pour enregistrer les données correspondants
   app.use(bodyParser.json());
   app.use(mongoSanitize()); // Nettoie les données d'utilisateur pour protéger de l'injection
+  app.use(helmet()); // Protection en configurant les en-têtes HTTP
   app.use('/images', express.static(path.join(__dirname, 'images')));
   app.use('/api/auth', userRoutes);
   app.use('/api/sauces', stuffRoutes);
