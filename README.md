@@ -2,6 +2,6 @@
 
 # Projet 6 OpenClassrooms
 
-# Pour faire fonctionner cette aplication, veuillez cloner le fron-end à l'adresse suivante:
+# Pour faire fonctionner cette application, veuillez cloner le fron-end à l'adresse suivante:
 
 # https://github.com/OpenClassrooms-Student-Center/dwj-projet6
