@@ -6,8 +6,9 @@ const jwt = require('jsonwebtoken');
 // on créer un utilisateur
 exports.signup = (req, res, next) => {
 
-  // on crée un regex pour obligé 8 caractères minimums avec au moins 1 majuscule, 1 minuscule et 1 chiffre
+  // on crée un regex pour obliger 8 caractères minimums avec au moins 1 majuscule, 1 minuscule et 1 chiffre
   const regex_pass =/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
+  
   if (regex_pass.test(req.body.password) == false){
     return res.status(401).json({ error:'Format du mot de passe incorrect !' });
   } else{
